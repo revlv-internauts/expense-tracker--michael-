@@ -7,7 +7,7 @@ type ExpenseItem = {
         name: string;
     };
     mode?: string;
-    amount?: string | number;
+    amount?: number;
     item?: string;
 };
 
@@ -29,7 +29,6 @@ export default function ExpenseTable({ expenses }: ExpenseTableProps) {
                 <table className="w-full table-auto text-sm">
                     <thead>
                         <tr className="text-left">
-                            <th className="px-3 py-2">ID</th>
                             <th className="px-3 py-2">Category</th>
                             <th className="px-3 py-2">Mode</th>
                             <th className="px-3 py-2">Amount</th>
@@ -39,7 +38,6 @@ export default function ExpenseTable({ expenses }: ExpenseTableProps) {
                     <tbody>
                         {expenses.map((expense: ExpenseItem, index: number) => (
                             <tr key={expense.id ?? index} className="border-t">
-                                <td className="px-3 py-2">{expense.id ?? '-'}</td>
                                 <td className="px-3 py-2">{expense.category?.name ?? '-'}</td>
                                 <td className="px-3 py-2">{expense.mode ?? '-'}</td>
                                 <td className="px-3 py-2">

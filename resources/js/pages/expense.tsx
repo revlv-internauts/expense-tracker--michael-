@@ -8,9 +8,9 @@ import { useState } from 'react';
 
 type ExpenseItem = {
     id?: number;
-    category?: string;
+    category?: { id: number; name: string; };
     mode?: string;
-    amount?: string | number;
+    amount?: number;
     item?: string;
 };
 

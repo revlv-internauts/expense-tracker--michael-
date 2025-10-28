@@ -139,7 +139,7 @@ export default function ExpenseCreateForm({ action = '/expenses', onSuccess }: P
             className="w-full rounded border border-zinc-300 bg-white px-3 py-2 text-sm text-zinc-900"
             value={data.item}
             onChange={(e) => setData('item', e.target.value)}
-            placeholder="e.g., Groceries"
+            placeholder="Enter item Name"
           />
           {errors.item && <p className="mt-1 text-sm text-red-500">{errors.item}</p>}
         </div>
