@@ -16,7 +16,8 @@ Route::middleware(['auth', 'verified'])->group(function () {
     })->name('dashboard');
     
     Route::get('expense', [ExpenseController::class, 'index'])->name('expense');
-    
+    Route::put('expense/{expense}', [ExpenseController::class, 'update'])->name('expense.update');
+    Route::delete('expense/{expense}', [ExpenseController::class, 'destroy'])->name('expense.destroy');
     Route::resource('expenses', ExpenseController::class);
     Route::post('categories', [CategoryController::class, 'store']);
 });

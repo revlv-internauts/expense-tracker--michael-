@@ -3,6 +3,7 @@
 namespace Database\Factories;
 
 use App\Models\User;
+use App\Models\Category;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -19,8 +20,8 @@ class ExpenseFactory extends Factory
     {
         return [
             'user_id' => User::factory(),
-            'category' => fake()->randomElement(['Food', 'Transport', 'Entertainment', 'Utilities', 'Shopping']),
-            'mode' => fake()->randomElement(['Cash', 'Card', 'Online', 'Bank Transfer']),
+            'category_id' => Category::factory(),
+            'mode' => fake()->randomElement(['Cash', 'Card']),
             'amount' => fake()->randomFloat(2, 10, 500),
             'item' => fake()->words(3, true),
         ];
