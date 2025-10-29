@@ -84,7 +84,7 @@ class ExpenseController extends Controller
     public function update(Request $request, Expense $expense)
     {
         $data = $request->validate([
-            'category' => 'required|exists:categories,id',
+            'category_id' => 'required|exists:categories,id',
             'mode'     => 'required|string|max:255',
             'amount'   => 'required|numeric',
             'item'     => 'required|string|max:255',

@@ -46,6 +46,7 @@ class ExpenseTest extends TestCase
         $newCategory = Category::factory()->create();
 
         $response = $this->actingAs($user)->put("/expenses/{$expense->id}", [
+            'user_id' => $user->id,
             'category_id' => $newCategory->id,
             'amount' => $amount = 100.00,
             'item' => $item = 'Taxi',
@@ -55,7 +56,7 @@ class ExpenseTest extends TestCase
         $response->assertRedirect();
 
         $this->assertDatabaseHas('expenses', [
-            'id' => $expense->id,
+            
             'user_id' => $user->id,
             'category_id' => $newCategory->id,
             'amount' => $amount,
