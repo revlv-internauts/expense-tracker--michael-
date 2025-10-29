@@ -22,6 +22,7 @@ class ExpenseController extends Controller
             ->latest()
             ->get();
 
+            
         $categories = Category::all();
 
         Log::info('Expenses fetched', ['count' => $expenses->count(), 'user_id' => $request->user()->id]);
@@ -32,6 +33,7 @@ class ExpenseController extends Controller
         ]);
     }
 
+    
     /**
      * Show the form for creating a new resource.
      */

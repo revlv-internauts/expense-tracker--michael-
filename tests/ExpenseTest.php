@@ -34,7 +34,35 @@ class ExpenseTest extends TestCase
         ]);
     }
 
- 
+    public function test_can_update_expense(): void
+    {
+        $user = User::factory()->create();
+        $category = Category::factory()->create();
+        $expense = Expense::factory()->create([
+            'user_id' => $user->id,
+            'category_id' => $category->id,
+        ]);
+
+        $newCategory = Category::factory()->create();
+
+        $response = $this->actingAs($user)->put("/expenses/{$expense->id}", [
+            'category_id' => $newCategory->id,
+            'amount' => $amount = 100.00,
+            'item' => $item = 'Taxi',
+            'mode' => $mode = 'Cash',
+        ]);
+
+        $response->assertRedirect();
+
+        $this->assertDatabaseHas('expenses', [
+            'id' => $expense->id,
+            'user_id' => $user->id,
+            'category_id' => $newCategory->id,
+            'amount' => $amount,
+            'item' => $item,
+            'mode' => $mode,
+        ]);
+    }
 
     public function test_can_delete_expense(): void
     {
