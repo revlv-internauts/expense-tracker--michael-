@@ -1,4 +1,5 @@
 import { PlaceholderPattern } from '@/components/ui/placeholder-pattern';
+import { Link } from '@inertiajs/react';
 
 type ExpenseItem = {
     id?: number;
@@ -33,6 +34,8 @@ export default function ExpenseTable({ expenses }: ExpenseTableProps) {
                             <th className="px-3 py-2">Mode</th>
                             <th className="px-3 py-2">Amount</th>
                             <th className="px-3 py-2">Item</th>
+                            <th className="px-3 py-2">Delete</th>
+
                         </tr>
                     </thead>
                     <tbody>
@@ -46,6 +49,11 @@ export default function ExpenseTable({ expenses }: ExpenseTableProps) {
                                         : '0.00'}
                                 </td>
                                 <td className="px-3 py-2">{expense.item ?? '-'}</td>
+                                <td className="px-3 py-2">
+                                    <Link href={`/expenses/${expense.id}`} method="delete" as="button" className="bg-red-500 text-white px-2 py-1 rounded text-sm">
+                                        Delete
+                                    </Link>
+                                </td>
                             </tr>
                         ))}
                     </tbody>
